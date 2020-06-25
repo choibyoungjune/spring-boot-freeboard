@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Board Form</title>
+    <div th:replace="layout/css::css"></div>
+</head>
+<body>
+<div th:replace="layout/header::header"></div>
+
+<div class="container">
+    <form role="form" action="/board/list/item" method="post" th:object="${board}">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="제목" th:field="*{title}" readonly="readonly">
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" placeholder="내용" th:field="*{content}" readonly="readonly" rows="5">
+            </textarea>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="게시판" th:field="*{boardType}" readonly="readonly">
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

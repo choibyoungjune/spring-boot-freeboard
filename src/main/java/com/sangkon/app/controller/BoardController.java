@@ -56,7 +56,7 @@ public class BoardController {
     public String getBoardItem(@PathVariable Long id, Model model) {
         Board board = boardService.getBoardItem(id);
         model.addAttribute("board", board);
-        return "board/form";
+        return "board/item";
     }
 
 }
