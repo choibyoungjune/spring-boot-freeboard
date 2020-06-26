@@ -59,4 +59,23 @@ public class BoardController {
         return "board/item";
     }
 
+    @GetMapping("/board/list/item/delete/{id}")
+    public String removeBoardItem(@PathVariable Long id) {
+        boardService.removeBoardItem(id);
+        return "redirect:/board/list";
+    }
+
+    @GetMapping("/board/list/item/update/{id}")
+    public String getUpdateFormBoardItem(@PathVariable Long id, Model model) {
+        Board board = boardService.getBoardItem(id);
+        model.addAttribute("board", board);
+        return "board/update-form";
+    }
+
+    @PostMapping("/board/list/item/update/{id}")
+    public String updateBoardItem(@PathVariable Long id, Board board) {
+        board.setIdx(id);
+        boardService.saveBoard(board);
+        return "redirect:/board/list";
+    }
 }
